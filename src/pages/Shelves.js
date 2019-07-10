@@ -40,8 +40,8 @@ class Shelves extends Component {
           {this.state.books && (
             <div>
               <div className="list-books-content">
-                <div className="bookshelf">
-                  <h2 className="bookshelf-title">Currently Reading</h2>
+                <div className="bookshelf currently-reading">
+                  <h2>Currently Reading</h2>
                   <div className="bookshelf-books">
                     <ol className="books-grid">
                       {this.state.books
@@ -62,7 +62,7 @@ class Shelves extends Component {
                   </div>
                 </div>
                 <div className="bookshelf">
-                  <h2 className="bookshelf-title">Want to Read</h2>
+                  <h2>Want to Read</h2>
                   <div className="bookshelf-books">
                     <ol className="books-grid">
                       {this.state.books
@@ -83,7 +83,7 @@ class Shelves extends Component {
                   </div>
                 </div>
                 <div className="bookshelf">
-                  <h2 className="bookshelf-title">Read</h2>
+                  <h2>Read</h2>
                   <div className="bookshelf-books">
                     <ol className="books-grid">
                       {this.state.books
