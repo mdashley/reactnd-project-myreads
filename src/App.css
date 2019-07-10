@@ -45,6 +45,11 @@ body,
   }
 }
 
+.bookshelf:first-of-type h2 {
+  margin-top: 0;
+  padding-top: 0.83em;
+}
+
 .bookshelf-books {
   text-align: center;
 }
