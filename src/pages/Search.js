@@ -43,7 +43,10 @@ class Search extends Component {
     return (
       <div className="search-books">
         <div className="search-books-bar">
-          <button className="close-search" onClick={() => ({})}>
+          <button
+            className="close-search"
+            onClick={() => this.props.history.push('/')}
+          >
             Close
           </button>
           <div className="search-books-input-wrapper">
