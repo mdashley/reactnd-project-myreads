@@ -3,7 +3,7 @@ import * as BooksAPI from '../BooksAPI';
 import * as SearchUtil from '../utils/SearchUtil';
 import Book from '../components/Book';
 
-class MainPage extends Component {
+class Shelves extends Component {
   state = {
     books: null,
   };
@@ -126,4 +126,4 @@ class MainPage extends Component {
   }
 }
 
-export default MainPage;
+export default Shelves;
