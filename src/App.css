@@ -17,14 +17,17 @@ body,
 
 .list-books-title {
   padding: 10px 0;
-  background: #2e7c31;
-  text-align: center;
+  background: #fff;
+  text-align: start;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
 .list-books-title h1 {
   font-weight: 400;
   margin: 0;
-  color: white;
+  margin-left: 20px;
+  font-size: 25px;
+  color: #5f6368;
 }
 
 .list-books-content {
@@ -61,7 +64,8 @@ body,
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background: #2e7d32;
+  border: transparent;
+  background: #ffa000;
   background-image: url('./icons/add.svg');
   background-repeat: no-repeat;
   background-position: center;
@@ -171,7 +175,7 @@ button:active {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: #60ac5d;
+  background: #039be5;
   background-image: url('./icons/arrow-drop-down.svg');
   background-repeat: no-repeat;
   background-position: center;
@@ -189,8 +193,10 @@ button:active {
 /* book cover */
 
 .book-cover {
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3),
+    0 1px 3px 1px rgba(60, 64, 67, 0.15);
   background: #eee;
+  border-radius: 3px;
 }
 
 .book-cover-title {
