@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Book from '../components/Book';
 import * as BooksAPI from '../BooksAPI';
 import * as SearchUtil from '../utils/SearchUtil';
 
@@ -24,6 +25,7 @@ class Search extends Component {
     }
 
     BooksAPI.search(this.state.query).then(res => {
+      console.log(res);
       let newBookList = [];
       let newSearchError = false;
 
@@ -38,6 +40,24 @@ class Search extends Component {
       this.setState({ error: newSearchError, books: newBookList });
     });
   };
+
+  changeBookShelf(book, shelf) {
+    BooksAPI.update(book, shelf).then(res => {
+      let newBookList = this.state.books.slice(0);
+      const books = newBookList.filter(listBook => listBook.id === book.id);
+
+      if (books.length) {
+        // Update the book that's already on the shelf
+        books[0].shelf = shelf;
+      } else {
+        // Add the book to the shelf and sort the list of books again
+        newBookList.push(book);
+        newBookList = SearchUtil.sortBooks(newBookList);
+      }
+
+      this.setState({ books: newBookList });
+    });
+  }
 
   render() {
     return (
@@ -59,7 +79,16 @@ class Search extends Component {
           </div>
         </div>
         <div className="search-books-results">
-          <ol className="books-grid"></ol>
+          <ol className="books-grid">
+            {this.state.books.map(book => (
+              <li key={book.id}>
+                <Book
+                  book={book}
+                  onBookStateChange={this.changeBookShelf.bind(this)}
+                />
+              </li>
+            ))}
+          </ol>
         </div>
       </div>
     );

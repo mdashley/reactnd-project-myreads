@@ -1,14 +1,33 @@
 import React, { Component } from 'react';
 import * as BooksAPI from '../BooksAPI';
+import * as SearchUtil from '../utils/SearchUtil';
 import Book from '../components/Book';
 
-class MainPage extends Component {
+class Shelves extends Component {
   state = {
     books: null,
   };
 
   componentDidMount() {
     BooksAPI.getAll().then(booksArr => this.setState({ books: booksArr }));
+  }
+
+  changeBookShelf(book, shelf) {
+    BooksAPI.update(book, shelf).then(res => {
+      let newBookList = this.state.books.slice(0);
+      const books = newBookList.filter(listBook => listBook.id === book.id);
+
+      if (books.length) {
+        // Update the book that's already on the shelf
+        books[0].shelf = shelf;
+      } else {
+        // Add the book to the shelf and sort the list of books again
+        newBookList.push(book);
+        newBookList = SearchUtil.sortBooks(newBookList);
+      }
+
+      this.setState({ books: newBookList });
+    });
   }
 
   render() {
@@ -31,9 +50,10 @@ class MainPage extends Component {
                           return (
                             <li key={book.id}>
                               <Book
-                                title={book.title}
-                                cover={book.imageLinks.thumbnail}
-                                author={book.authors[0]}
+                                book={book}
+                                onBookStateChange={this.changeBookShelf.bind(
+                                  this
+                                )}
                               />
                             </li>
                           );
@@ -51,9 +71,10 @@ class MainPage extends Component {
                           return (
                             <li key={book.id}>
                               <Book
-                                title={book.title}
-                                cover={book.imageLinks.thumbnail}
-                                author={book.authors[0]}
+                                book={book}
+                                onBookStateChange={this.changeBookShelf.bind(
+                                  this
+                                )}
                               />
                             </li>
                           );
@@ -71,9 +92,10 @@ class MainPage extends Component {
                           return (
                             <li key={book.id}>
                               <Book
-                                title={book.title}
-                                cover={book.imageLinks.thumbnail}
-                                author={book.authors[0]}
+                                book={book}
+                                onBookStateChange={this.changeBookShelf.bind(
+                                  this
+                                )}
                               />
                             </li>
                           );
@@ -95,4 +117,4 @@ class MainPage extends Component {
   }
 }
 
-export default MainPage;
+export default Shelves;
