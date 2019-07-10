@@ -51,9 +51,6 @@ class Shelves extends Component {
                             <li key={book.id}>
                               <Book
                                 book={book}
-                                title={book.title}
-                                cover={book.imageLinks.thumbnail}
-                                author={book.authors[0]}
                                 onBookStateChange={this.changeBookShelf.bind(
                                   this
                                 )}
@@ -75,9 +72,6 @@ class Shelves extends Component {
                             <li key={book.id}>
                               <Book
                                 book={book}
-                                title={book.title}
-                                cover={book.imageLinks.thumbnail}
-                                author={book.authors[0]}
                                 onBookStateChange={this.changeBookShelf.bind(
                                   this
                                 )}
@@ -99,9 +93,6 @@ class Shelves extends Component {
                             <li key={book.id}>
                               <Book
                                 book={book}
-                                title={book.title}
-                                cover={book.imageLinks.thumbnail}
-                                author={book.authors[0]}
                                 onBookStateChange={this.changeBookShelf.bind(
                                   this
                                 )}
