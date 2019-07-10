@@ -155,11 +155,12 @@ button:active {
 }
 
 .book-title {
+  font-weight: bold;
   margin-top: 10px;
 }
 
 .book-authors {
-  color: #999;
+  opacity: 0.7;
 }
 
 .book-top {
