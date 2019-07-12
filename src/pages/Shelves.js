@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import * as BooksAPI from '../BooksAPI';
 import * as SearchUtil from '../utils/SearchUtil';
 import Book from '../components/Book';
+import logo from '../icons/logo.svg';
 
 class Shelves extends Component {
   state = {
@@ -35,13 +36,13 @@ class Shelves extends Component {
       <div className="main-page-container">
         <div className="list-books">
           <div className="list-books-title">
-            <h1>MyReads</h1>
+            <img src={logo} alt="MyReads logo" />
           </div>
-          {this.state.books && (
+          {this.state.books ? (
             <div>
               <div className="list-books-content">
-                <div className="bookshelf">
-                  <h2 className="bookshelf-title">Currently Reading</h2>
+                <div className="bookshelf currently-reading">
+                  <h2>Currently Reading</h2>
                   <div className="bookshelf-books">
                     <ol className="books-grid">
                       {this.state.books
@@ -62,7 +63,7 @@ class Shelves extends Component {
                   </div>
                 </div>
                 <div className="bookshelf">
-                  <h2 className="bookshelf-title">Want to Read</h2>
+                  <h2>Want to Read</h2>
                   <div className="bookshelf-books">
                     <ol className="books-grid">
                       {this.state.books
@@ -83,7 +84,7 @@ class Shelves extends Component {
                   </div>
                 </div>
                 <div className="bookshelf">
-                  <h2 className="bookshelf-title">Read</h2>
+                  <h2>Read</h2>
                   <div className="bookshelf-books">
                     <ol className="books-grid">
                       {this.state.books
@@ -110,6 +111,8 @@ class Shelves extends Component {
                 </button>
               </div>
             </div>
+          ) : (
+            <div className="shelves-loading"></div>
           )}
         </div>
       </div>
