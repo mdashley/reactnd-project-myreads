@@ -111,7 +111,7 @@ class Shelves extends Component {
               </div>
             </div>
           ) : (
-            <div class="shelves-loading"></div>
+            <div className="shelves-loading"></div>
           )}
         </div>
       </div>
