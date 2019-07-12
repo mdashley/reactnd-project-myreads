@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import * as BooksAPI from '../BooksAPI';
 import * as SearchUtil from '../utils/SearchUtil';
 import Book from '../components/Book';
+import logo from '../icons/logo.svg';
 
 class Shelves extends Component {
   state = {
@@ -35,7 +36,7 @@ class Shelves extends Component {
       <div className="main-page-container">
         <div className="list-books">
           <div className="list-books-title">
-            <h1>MyReads</h1>
+            <img src={logo} alt="MyReads logo" />
           </div>
           {this.state.books ? (
             <div>

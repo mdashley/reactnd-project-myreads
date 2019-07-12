@@ -18,16 +18,13 @@ body,
 .list-books-title {
   padding: 10px 0;
   background: #fff;
-  text-align: start;
+  text-align: center;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
-.list-books-title h1 {
-  font-weight: 400;
-  margin: 0;
-  margin-left: 20px;
-  font-size: 25px;
-  color: #5f6368;
+.list-books-title img {
+  width: 200px;
+  margin-top: 7px;
 }
 
 .list-books-content {
