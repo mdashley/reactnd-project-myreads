@@ -37,7 +37,7 @@ class Shelves extends Component {
           <div className="list-books-title">
             <h1>MyReads</h1>
           </div>
-          {this.state.books && (
+          {this.state.books ? (
             <div>
               <div className="list-books-content">
                 <div className="bookshelf currently-reading">
@@ -110,6 +110,8 @@ class Shelves extends Component {
                 </button>
               </div>
             </div>
+          ) : (
+            <div class="shelves-loading"></div>
           )}
         </div>
       </div>
