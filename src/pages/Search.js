@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import Book from '../components/Book';
 import * as BooksAPI from '../BooksAPI';
 import * as SearchUtil from '../utils/SearchUtil';
@@ -10,6 +11,12 @@ class Search extends Component {
   };
 
   queryTimeout = null;
+
+  componentDidMount() {
+    if (!this.props.currentBooks) {
+      this.props.onGetAllBooks();
+    }
+  }
 
   handleQueryChange = val => {
     clearTimeout(this.queryTimeout);
@@ -25,7 +32,6 @@ class Search extends Component {
     }
 
     BooksAPI.search(this.state.query).then(res => {
-      console.log(res);
       let newBookList = [];
       let newSearchError = false;
 
@@ -33,7 +39,10 @@ class Search extends Component {
         newSearchError = true;
       } else if (res.length) {
         // Handle books that were already on one of the user's shelves
-        newBookList = SearchUtil.mergeShelfAndSearch([], res);
+        newBookList = SearchUtil.mergeShelfAndSearch(
+          this.props.currentBooks,
+          res
+        );
         newBookList = SearchUtil.sortBooks(newBookList);
       }
 
@@ -63,12 +72,9 @@ class Search extends Component {
     return (
       <div className="search-books">
         <div className="search-books-bar">
-          <button
-            className="close-search"
-            onClick={() => this.props.history.push('/')}
-          >
+          <Link className="close-search" to="/">
             Close
-          </button>
+          </Link>
           <div className="search-books-input-wrapper">
             <input
               type="text"
@@ -84,7 +90,7 @@ class Search extends Component {
               <li key={book.id}>
                 <Book
                   book={book}
-                  onBookStateChange={this.changeBookShelf.bind(this)}
+                  onChangeBookShelf={this.props.onChangeBookShelf}
                 />
               </li>
             ))}

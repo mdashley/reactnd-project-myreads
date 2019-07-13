@@ -23,7 +23,7 @@ body,
 }
 
 .list-books-title img {
-  width: 200px;
+  width: 175px;
   margin-top: 7px;
 }
 
@@ -57,7 +57,7 @@ body,
   bottom: 25px;
 }
 
-.open-search button {
+.open-search a {
   display: block;
   width: 50px;
   height: 50px;
@@ -132,6 +132,7 @@ body,
   left: 15px;
   width: 50px;
   height: 53px;
+  background-color: #fff;
   background-image: url('./icons/arrow-back.svg');
   background-position: center;
   background-repeat: no-repeat;
