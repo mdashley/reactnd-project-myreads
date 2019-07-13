@@ -1,21 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import BookShelfChanger from './BookShelfChanger';
 
 class Book extends Component {
-  state = {
-    shelfSelection: 'none',
-  };
-
-  componentDidMount() {
-    this.setState({ shelfSelection: this.props.book.shelf });
-  }
-
-  onChangeShelf = (book, shelf) => {
-    // Set the state for the shelf selection
-    this.setState({ shelfSelection: shelf });
-
+  changeBookShelf = (book, shelf) => {
     // Trigger the API call in the parent component
-    this.props.onBookStateChange(book, shelf);
+    this.props.onChangeBookShelf(book, shelf);
   };
 
   render() {
@@ -34,23 +24,10 @@ class Book extends Component {
               })`,
             }}
           ></div>
-          <div className="book-shelf-changer">
-            <select
-              value={this.state.shelfSelection}
-              onChange={e =>
-                this.onChangeShelf(this.props.book, e.target.value)
-              }
-            >
-              >
-              <option value="move" disabled>
-                Move to...
-              </option>
-              <option value="currentlyReading">Currently Reading</option>
-              <option value="wantToRead">Want to Read</option>
-              <option value="read">Read</option>
-              <option value="none">None</option>
-            </select>
-          </div>
+          <BookShelfChanger
+            book={this.props.book}
+            onChangeBookShelf={this.changeBookShelf}
+          />
         </div>
         <div className="book-title">{this.props.book.title}</div>
         <div className="book-authors">
