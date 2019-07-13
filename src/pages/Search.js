@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import Book from '../components/Book';
 import * as BooksAPI from '../BooksAPI';
 import * as SearchUtil from '../utils/SearchUtil';
@@ -25,7 +26,6 @@ class Search extends Component {
     }
 
     BooksAPI.search(this.state.query).then(res => {
-      console.log(res);
       let newBookList = [];
       let newSearchError = false;
 
@@ -63,12 +63,9 @@ class Search extends Component {
     return (
       <div className="search-books">
         <div className="search-books-bar">
-          <button
-            className="close-search"
-            onClick={() => this.props.history.push('/')}
-          >
+          <Link className="close-search" to="/">
             Close
-          </button>
+          </Link>
           <div className="search-books-input-wrapper">
             <input
               type="text"
