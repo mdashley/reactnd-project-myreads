@@ -26,7 +26,6 @@ class Search extends Component {
     }
 
     BooksAPI.search(this.state.query).then(res => {
-      console.log(res);
       let newBookList = [];
       let newSearchError = false;
 
